@@ -2,7 +2,6 @@ package main
 
 import (
 	"be-tm/internal/modules"
-	"be-tm/pkg/cli"
 	"be-tm/pkg/core"
 	"be-tm/pkg/swagger"
 )
@@ -28,7 +27,7 @@ import (
 
 func main() {
 	core := core.Init()
-	cli.Init(core.Cfg)
+	core.CLI()
 	modules.Init(core.RouterApiGroup, core.Database)
 	swagger.Init(core.Router)
 	core.Run()

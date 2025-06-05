@@ -1,6 +1,8 @@
 package user
 
-import "be-tm/pkg/common"
+import (
+	"be-tm/pkg/common"
+)
 
 type Controller struct {
 	service Service
@@ -15,6 +17,10 @@ type RequestEmailCodeInput struct {
 }
 
 func (c *Controller) HandleEmailCodeRequest(request RequestEmailCodeInput) *common.AppError {
+	exists, _ := c.service.IsEmailAwaitVerify(request.Email)
+	if exists {
+		return common.ExistsError("email")
+	}
 	err := c.service.GenerateEmailCode(request.Email)
 	if err != nil {
 		return common.InternalServerError()

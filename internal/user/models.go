@@ -7,7 +7,6 @@ type User struct {
 }
 
 type RegistrationCode struct {
-	Id    string `gorm:"primaryKey"`
 	Email string
 	Code  int32
 }

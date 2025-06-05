@@ -17,11 +17,11 @@ func (h *Handler) RegisterRoutes(router *gin.RouterGroup) {
 	userGroup.POST("/register/email-code/send", h.RequestEmailCode)
 }
 
-// @Summary get verification email code
+// @Summary Get verification email code
 // @Description get verification email code
 // @Tags users
 // @Produce json
-// @Param request body RequestEmailCodeInput true "email for send verification code"
+// @Param request body RequestEmailCodeInput true "Email for send verification code"
 // @Router /users/register/email-code/send [post]
 func (h *Handler) RequestEmailCode(ctx *gin.Context) {
 	var request RequestEmailCodeInput
